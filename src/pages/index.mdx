@@ -1,8 +1,8 @@
 ---
 layout: ../layouts/Layout.astro
-title: Academic Project Page Template
-description: Simple project page template for your research paper, built with Astro and Tailwind CSS
-favicon: /favicon.svg
+title: "TaiwanVQA: A Vision-Question Answering Benchmark for Taiwanese Daily Life"
+description: "TaiwanVQA: A Vision-Question Answering Benchmark for Taiwanese Daily Life"
+favicon: /favicon.png
 thumbnail: /screenshot.png
 ---
 
@@ -24,42 +24,59 @@ import CodeBlock from "../components/CodeBlock.astro";
 export const components = {pre: CodeBlock}
 
 import outside from "../assets/outside.mp4";
+import cover from "../assets/cover.png";
+import compare from "../assets/compare_mmmu.jpg";
+import categories from "../assets/categories.png";
 import transformer from "../assets/transformer.webp";
 
 <Header
   title={frontmatter.title}
   authors={[
     {
-      name: "Roman Hauksson",
-      url: "https://roman.technology",
-      institution: "Independent",
-      notes: ["*", "†"],
+      name: "Hsin Yi, Hsieh",
+      notes: ["1"],
     },
     {
-      name: "Author Two",
-      institution: "Institution Two",
-      notes: ["*", "†"],
+      name: "Shang Wei, Liu",
+      notes: ["1"],
     },
     {
-      name: "Author Three",
-      institution: "Institution Three",
-      notes: ["†"],
+      name: "Chang Chih, Meng",
+      notes: ["2"],
     },
     {
-      name: "Author Four",
-      institution: "Institution Four",
+      name: "Chien Hwa, Chen",
+      notes: ["2"],
     },
+    {
+      name: "Shuo Yue, Lin",
+      notes: ["3"],
+    },
+    {
+      name: "Hen-Hsen Huang",
+      notes: ["4"],
+    }
+
   ]}
-  conference="Conference Name"
+  conference="COLING 2024"
   notes={[
     {
-      symbol: "*",
-      text: "author note one",
+      symbol: "1",
+      text: "National Applied Research Laboratories",
     },
     {
-      symbol: "†",
-      text: "author note two",
+      symbol: "2",
+      text: "National Yang Ming Chiao Tung University",
     },
+    {
+      symbol: "3",
+      text: "National Central University",
+    },
+    {
+      symbol: "4",
+      text: "Institute of Information Science, Academia Sinica",
+    },
+
   ]}
   links={[
     {
@@ -80,48 +97,69 @@ import transformer from "../assets/transformer.webp";
   ]}
   />
 
-<Video source={outside} />
+{/* <Video source={outside} /> */}
+<Image src={cover} alt="alt text" />
+<Figure caption="TaiwanVQA: A Vision-Question Answering Benchmark for Taiwanese Daily Life" />
 
 ## Abstract
 
 This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold** and _italics_ as well as custom components like <SmallCaps>small caps.</SmallCaps>
 
-## Another section, with a figure
+## Introduction
 
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
+We introduce **TaiwanVQA**, a new benchmark designed to evaluate multimodal models on tasks deeply rooted in the daily life and culture of Taiwan. TaiwanVQA includes _____ meticulously collected multimodal questions from real-world scenarios, covering thirteen major themes: Scenic Spots, Food, Transportation, Culture, Art, Daily Life, Taiwanese Public Figures, Politics, Geography, Sports Events, Flora and Fauna, History, and Entertainment. These questions encompass a wide range of subcategories, such as natural landscapes, local delicacies, public transportation systems, traditional customs, and more, providing a comprehensive assessment of a model’s ability to understand and reason within the context of Taiwanese society.
 
-<Figure
-    caption="Diagram of the transformer deep learning architecture."
-  >
-    <Image src={transformer} alt="alt text" />
-</Figure>
+Unlike existing benchmarks, TaiwanVQA focuses on everyday, culturally rich scenarios, challenging models to perform tasks that require not just visual recognition but also an understanding of local customs, social practices, and cultural nuances. Our benchmark presents three main challenges:
 
-## Two columns
+- **Comprehensiveness**: A broad collection of problems encompassing multiple real-life domains specific to Taiwan.
+- **Cultural Context**: The necessity for models to grasp both visual elements and the underlying cultural significance.
+- **Contextual Reasoning**: Tasks demanding not just basic image recognition but also reasoning based on Taiwanese daily life experiences.
 
-Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
 
-<TwoColumns>
-  <Figure slot="left" caption="Take a look at this YouTube video.">
-    <YouTubeVideo videoId="wjZofJX0v4M" />
-  </Figure>
-  <Figure slot="right" caption="Now look at this Gaussian Splat, rendered with a React component.">
-    <Splat client:idle />
-  </Figure>
-</TwoColumns>
+# TaiwanVQA
+## Overview
 
-## LaTeX
+We introduce TaiwanVQA, a benchmark specifically designed to evaluate the multimodal understanding and reasoning capabilities of foundation models in the context of daily life and culture in Taiwan. TaiwanVQA encompasses a wide range of everyday scenarios such as public transportation, local cuisine, cultural practices, and social customs, covering thirteen key categories, including Scenic Spots, Food, Transportation, Religion, Arts, and more. The questions were meticulously curated by a team of annotators deeply familiar with Taiwanese culture to ensure the benchmark reflects real-world, casual, and culturally nuanced situations.
 
-You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
+TaiwanVQA is designed to measure three core competencies in vision-language models: perception, cultural knowledge, and reasoning. The goal is to assess how well these models can not only recognize and understand visual information but also apply contextual and culturally specific reasoning to solve tasks that are embedded in Taiwan’s unique social and cultural fabric.
 
-<LaTeX formula="\int_a^b f(x) dx" />
+<Image src={categories} alt="alt text" />
 
-## BibTeX citation
+Our benchmark introduces several key challenges for multimodal models, which are depicted in a figure. One of the major challenges lies in the requirement for both accurate visual perception and deep cultural understanding. The tasks in TaiwanVQA demand more than basic recognition; they require models to grasp the meaning and context behind visual elements, such as understanding the significance of a religious ceremony or recognizing common local street food. This requires not only visual acuity but also a grasp of Taiwan’s social, historical, and cultural subtleties, which goes beyond simple object detection and classification.
+
+By focusing on these culturally rich and everyday scenarios, TaiwanVQA pushes the boundaries of current multimodal model capabilities, offering a benchmark that assesses not just general visual understanding but also the model’s adaptability to specific regional and cultural contexts.
+
+## Comparisons with Existing Benchmarks
+{/* To further distinguish the difference between dataset and other existing ones, we elaborate the benchmark details in Figure. From the breadth perspective, the prior benchmarks are heavily focused on daily knowledge and common sense. The covered image format is also limited. Our benchmark aims to cover college-level knowledge with 30 image formats including diagrams, tables, charts, chemical structures, photos, paintings, geometric shapes, music sheets, medical images, etc. In the depth aspect, the previous benchmarks normally require commonsense knowledge or simple physical or temporal reasoning. In contrast, our benchmark requires deliberate reasoning with college-level subject knowledge. */}
+To further distinguish TaiwanVQA from existing benchmarks, we compare it with several popular benchmarks in the field of vision-language understanding. We focus on three key aspects: breadth, depth, and cultural context. In terms of breadth, TaiwanVQA covers a wide range of topics specific to Taiwanese daily life, such as local cuisine, cultural practices, and social customs. This is in contrast to existing benchmarks that focus on more general knowledge and common sense. In terms of depth, TaiwanVQA requires models to perform complex reasoning tasks that go beyond simple object recognition or commonsense reasoning. The questions in TaiwanVQA often require a deep understanding of Taiwanese culture and social practices, challenging models to reason about culturally specific scenarios. Finally, in terms of cultural context, TaiwanVQA is unique in its focus on Taiwanese daily life and culture. The questions in TaiwanVQA are designed to test a model’s ability to understand and reason within the context of Taiwanese society, requiring not just visual recognition but also an understanding of local customs, social practices, and cultural nuances.
+<Image src={compare} alt="alt text"/>
+<Figure caption="Comparison of TaiwanVQA with existing benchmarks in terms of breadth, depth, and cultural context." />
+
+# Experiment Results
+## Leaderboard
+{/* We evaluate various models including LLMs and LMMs. In each type, we consider both closed- and open-source models. Our evaluation is conducted under a zero-shot setting to assess the capability of models to generate accurate answers without fine-tuning or few-shot demonstrations on our benchmark. For all models, we use the default prompt provided by each model for multi-choice or open QA, if available. If models do not provide prompts for task types in MMMU, we conduct prompt engineering on the validation set and use the most effective prompt for the later zero-shot experiment. */}
+
+We evaluate a range of baseline models on TaiwanVQA, including both large language models (LLMs) and large multimodal models (LMMs). For each model type, we consider both closed-source and open-source models. Our evaluation is conducted under a zero-shot setting, meaning that models are not fine-tuned on TaiwanVQA and do not receive any task-specific demonstrations. For all models, we use the default prompt provided by each model for multi-choice or open question-answering tasks, if available. If models do not provide prompts for the task types in TaiwanVQA, we conduct prompt engineering on the validation set and use the most effective prompt for the zero-shot experiment.
+
+## Different Image Types
+
+## Different Difficulty Levels
+
+## Error Analysis
+
+## Error Examples
+
+## Correct Examples
+
+
+
+# BibTeX citation
 
 ```
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@inproceedings{taiwanvqa2024,
+  title={TaiwanVQA: A Vision-Question Answering Benchmark for Taiwanese Daily Life},
+  author={TBD},
+  booktitle={arxiv?},
+  year={2024}
 }
 ```
